@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dks10hh17glg3"]
+
+[ext_resource type="PackedScene" uid="uid://cf7mu6fnvqbjv" path="res://scenes/coin.tscn" id="1_014kd"]
+[ext_resource type="PackedScene" uid="uid://vbng1cqgm7s5" path="res://scenes/player.tscn" id="2_bswci"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gkh53"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_014kd"]
+albedo_color = Color(0.15294118, 0.13333334, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bswci"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rus8k"]
+size = Vector3(10, 0.5, 10)
+
+[node name="Level1" type="Node3D" unique_id=811202701]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=537211872]
+physics_material_override = SubResource("PhysicsMaterial_gkh53")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=214219731]
+transform = Transform3D(10, 0, 0, 0, 0.5, 0, 0, 0, 10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_014kd")
+mesh = SubResource("BoxMesh_bswci")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=291463037]
+shape = SubResource("BoxShape3D_rus8k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1737647751]
+transform = Transform3D(0.938112, 0.32206443, -0.12735915, -0.25185093, 0.8868153, 0.38746572, 0.23773298, -0.3314107, 0.91304433, 0, 4.29262, 6.6100073)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1184560684]
+transform = Transform3D(0.99970907, 0.015594512, 0.018400982, -0.022829045, 0.8580008, 0.5131408, -0.0077859014, -0.5134116, 0.85810727, 0.061296463, 6.5841155, 10.226499)
+fov = 73.722984
+
+[node name="Coin" parent="." unique_id=994259375 instance=ExtResource("1_014kd")]
+transform = Transform3D(0.997892, 0, 0.06489807, 0, 1, 0, -0.06489807, 0, 0.997892, 0, 2, 0)
+
+[node name="Player" parent="." unique_id=1900418694 instance=ExtResource("2_bswci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1050042, 1.8527601)
